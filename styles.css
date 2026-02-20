@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap");
+
+:root {
+	/* rows and cells vars are set in js */
+
+	--board-gap: 5px;
+	--board-border: black;
+
+	--cell-size: 70px;
+	--cell-bg: white;
+	--cell-border: grey;
+	--cell-edge-border: black;
+
+	--placed: blue;
+	--invalid: red;
+	--highlight: hsl(48, 100%, 90%);
+	/* --selected: rgb(242, 242, 242); */
+	--selected: hsl(48, 100%, 90%);
+
+	--tool-bg: white;
+	--tool-border: black;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	font-family: "JetBrains Mono", monospace;
+}
+
+.board {
+	display: grid;
+	grid-template-columns: repeat(var(--cols), var(--cell-size));
+	grid-template-rows: repeat(var(--rows), var(--cell-size));
+}
+
+.cell {
+	width: var(--cell-size);
+	height: var(--cell-size);
+	box-sizing: border-box;
+	font-size: calc(var(--cell-size) / 3.25);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background: var(--cell-bg);
+	border: 1px solid var(--cell-border);
+
+	cursor: pointer;
+}
+
+.cell:hover {
+	opacity: 0.5;
+}
+
+.highlighted {
+	background: var(--highlight);
+}
+
+.right-edge {
+	border-right: 2px solid var(--cell-edge-border);
+}
+
+.bottom-edge {
+	border-bottom: 2px solid var(--cell-edge-border);
+}
+
+.invalid {
+	border-color: var(--invalid);
+	color: var(--invalid);
+}
+
+.placed {
+	border-color: blue;
+	color: blue;
+}
+
+.panel {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 50px;
+	width: calc(var(--cell-size) * 9);
+}
+
+.tool {
+	width: var(--cell-size);
+	padding: 5px 0;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+
+	background: var(--tool-bg);
+	border: 1px solid var(--tool-border);
+
+	cursor: pointer;
+}
+
+.tool:hover {
+	transform: scale(0.99);
+	opacity: 0.8;
+}
+
+.tool:active {
+	transform: scale(0.97);
+}
+
+.selected {
+	background: var(--selected);
+}
+
+.endgame-message {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 30px;
+}
