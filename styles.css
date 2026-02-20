@@ -6,7 +6,7 @@
 	--board-gap: 5px;
 	--board-border: black;
 
-	--cell-size: 70px;
+	--cell-size: clamp(34px, 10vw, 70px);
 	--cell-bg: white;
 	--cell-border: grey;
 	--cell-edge-border: black;
@@ -24,8 +24,10 @@
 html,
 body {
 	width: 100%;
-	height: 100%;
+	min-height: 100svh;
 	margin: 0;
+	padding: 20px 12px;
+	box-sizing: border-box;
 
 	display: flex;
 	flex-direction: column;
@@ -84,17 +86,18 @@ body {
 }
 
 .panel {
-	display: flex;
-	justify-content: space-between;
-	gap: 10px;
-	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+	gap: clamp(4px, 1.5vw, 10px);
+	margin-top: clamp(20px, 6vw, 50px);
 	width: calc(var(--cell-size) * 9);
+	max-width: 100%;
 }
 
 .tool {
-	width: var(--cell-size);
+	width: 100%;
 	padding: 5px 0;
-	font-size: 30px;
+	font-size: clamp(18px, 4.8vw, 30px);
 	font-weight: bold;
 	text-align: center;
 
@@ -121,4 +124,11 @@ body {
 	display: flex;
 	gap: 15px;
 	margin-bottom: 30px;
+	text-align: center;
+}
+
+@media (max-width: 480px) {
+	.endgame-message {
+		margin-bottom: 16px;
+	}
 }
